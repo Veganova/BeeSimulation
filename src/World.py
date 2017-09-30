@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 from Bee import HoneyBee
+from Position import Posn
 
 # each tick is a second
 # meters per second
@@ -20,7 +21,9 @@ def main():
     #pygame.draw.circle(DISPLAY, blue, (0, 0), 20, 0)
 
 
-    bee = HoneyBee(0, 100)
+    for i in range(100):
+        HoneyBee(100, i*20)
+
 
     # Simulation loop
     while True:
@@ -30,9 +33,10 @@ def main():
                 sys.exit()
 
         canvas.fill(WHITE)
-        bee.update()
 
-        bee.draw(canvas)
+        for i in Posn.updatables:
+            i.update()
+            i.draw(canvas)
 
 
         pygame.display.update()

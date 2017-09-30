@@ -1,8 +1,9 @@
-class MovableObjects(BaseException):
+from Position import Posn
+
+class MovableObjects(Posn):
 
     def __init__(self, x, y, dx, dy):
-        self.x = x
-        self.y = y
+        super().__init__(x, y)
         self.dx = dx
         self.dy = dy
 
