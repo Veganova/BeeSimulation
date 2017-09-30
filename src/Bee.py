@@ -1,3 +1,5 @@
+import math
+
 from Movable import MovableObjects
 import Draw
 
@@ -19,7 +21,7 @@ class HoneyBee(MovableObjects):
         super().__init__(x, y, self.SPEED, 0)
         self.radius = 10#mm
         self.age = 0
-        self.home = hive
+        self.hive = hive
         # honey is the amount fed to the bee at birth
         # this also signifies hunger (if it hits 0, the bee is dead)
         self.hunger = hunger
@@ -29,19 +31,36 @@ class HoneyBee(MovableObjects):
 
         # 0 - wants to get flower
         # 1 - return necter to hive
-        self.status = 0
+        self.status = -1
+
+        self.changeStatus()
 
     def update(self):
         super().update()
         #self.honey -= 1
 
-        if (self.status == 0):
-            self.findFlower()
-        elif (self.status == 1):
-            self.returnToHive()
+
 
     def death(self):
         pass
 
     def draw(self, canvas):
         Draw.draw_circle(canvas, self.x, self.y, self.radius, self.color)
+
+    def returnToHive(self):
+        self.goto(self.hive)
+
+    def goto(self, posn):
+        vec = (posn.x - self.x, posn.y - self.y)
+        vecm = math.sqrt(vec[0] * vec[0] + vec[1] * vec[1])
+        self.dx = vec[0] * self.SPEED / vecm
+        self.dy = vec[1] * self.SPEED / vecm
+
+    def changeStatus(self):
+        self.status += 1
+        self.status = self.status % 2
+
+        if self.status == 0:
+            self.findFlower()
+        elif self.status == 1:
+            self.returnToHive()
