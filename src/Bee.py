@@ -37,18 +37,24 @@ class HoneyBee(MovableObjects):
 
     def update(self):
         super().update()
+
+        # target will be set based on the status
+        self.target.interact(self)
         #self.honey -= 1
 
 
 
     def choose_flower(self):
-        Flower.objects
         bestFlower = Flower.objects[0]
         if self.nectar > 2:
-            pass#back to hive
+            self.changeStatus()#back to hive
         for i in range(Flower.object.size):
             if bestFlower.nectar < Flower.objects[i]:
                 bestFlower = Flower.objects[i]
+
+        self.goto(bestFlower)
+
+
 
     def death(self):
         pass
@@ -59,17 +65,20 @@ class HoneyBee(MovableObjects):
     def returnToHive(self):
         self.goto(self.hive)
 
+# need to call this every time a status has changed
     def goto(self, posn):
         vec = (posn.x - self.x, posn.y - self.y)
         vecm = math.sqrt(vec[0] * vec[0] + vec[1] * vec[1])
         self.dx = vec[0] * self.SPEED / vecm
         self.dy = vec[1] * self.SPEED / vecm
 
+        self.target = posn
+
     def changeStatus(self):
         self.status += 1
         self.status = self.status % 2
 
         if self.status == 0:
-            self.findFlower()
+            self.choose_flower()
         elif self.status == 1:
             self.returnToHive()

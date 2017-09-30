@@ -47,6 +47,11 @@ class Hive(Posn):
     def draw(self, canvas):
         Draw.draw_circle(canvas, self.x, self.y, self.radius, self.color)
 
+    def interact(self, bee):
+
+        self.honey += bee.nectar
+
+        bee.nectar = 0
 
 
 
