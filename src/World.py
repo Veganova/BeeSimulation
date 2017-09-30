@@ -1,10 +1,11 @@
 import pygame, sys
 from pygame.locals import *
 from Bee import HoneyBee
+from Hive import Hive
 from Position import Posn
 
 # each tick is a second
-# meters per second
+# a pixel is a milimeter
 
 
 def main():
@@ -20,10 +21,8 @@ def main():
     pygame.draw.rect(canvas, blue, (200, 150, 100, 50))
     #pygame.draw.circle(DISPLAY, blue, (0, 0), 20, 0)
 
-
-    for i in range(100):
-        HoneyBee(100, i*20)
-
+    Hive(300, 300)
+    #HoneyBee(100, 100)
 
     # Simulation loop
     while True:

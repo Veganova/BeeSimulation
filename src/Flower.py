@@ -2,6 +2,7 @@ import Draw
 import math
 from Position import Posn
 from Bee import HoneyBee
+from Hive import Hive
 
 
 class Flower(Posn):
@@ -22,11 +23,22 @@ class Flower(Posn):
         else:
             return False
 
-
+    def transfer_pollen(self, HoneyBee):
+        if self.bee_close(self, HoneyBee):
+            if HoneyBee.pollen == 0 and self.stamen:
+                HoneyBee.pollen = 1
+                not self.stamen
+            elif HoneyBee.pollen == 0 and not self.stamen:
+                pass
+            elif HoneyBee.pollen == 1 and not self.pistil:
+                HoneyBee.pollen = 0
+                not self.pistil
+        else:
+            pass
 
     def death(self):
         pass
 
-bee1 = HoneyBee(1, 1)
+bee1 = HoneyBee(1, 1, Hive(10, 10))
 flower1 = Flower(4, 1)
 print(flower1.bee_close(bee1))
