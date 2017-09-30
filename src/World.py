@@ -38,7 +38,7 @@ def main():
         for i in Posn.updatables:
             i.update()
             i.draw(canvas)
-            
+
 
 
         pygame.display.update()
