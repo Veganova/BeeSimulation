@@ -12,6 +12,7 @@ class HoneyBee(MovableObjects):
 
     # 6000 milimeters per second
     SPEED = 6000
+    MAX_NECTAR = 2
 
 
 
@@ -37,24 +38,19 @@ class HoneyBee(MovableObjects):
 
     def update(self):
         super().update()
-
         # target will be set based on the status
         self.target.interact(self)
         #self.honey -= 1
 
-
-
     def choose_flower(self):
         bestFlower = Flower.objects[0]
-        if self.nectar > 2:
+        if self.nectar >= self.MAX_NECTAR:
             self.changeStatus()#back to hive
-        for i in range(Flower.object.size):
-            if bestFlower.nectar < Flower.objects[i]:
-                bestFlower = Flower.objects[i]
+        for flower in Flower.objects:
+            if bestFlower.nectar < flower.nectar:
+                bestFlower = flower
 
         self.goto(bestFlower)
-
-
 
     def death(self):
         pass

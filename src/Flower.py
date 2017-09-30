@@ -1,8 +1,9 @@
+import random
+
 import Draw
 import math
 from Position import Posn
-from Bee import HoneyBee
-from Hive import Hive
+
 
 
 class Flower(Posn):
@@ -20,34 +21,53 @@ class Flower(Posn):
     def draw(self, canvas):
         Draw.draw_circle(canvas, self.x, self.y, self.radius, self.color)
 
-    def bee_close(self, HoneyBee):
-        distance_between = math.sqrt(pow((HoneyBee.x - self.x), 2) + pow((self.y - HoneyBee.y), 2))
-        if distance_between <= self.radius + HoneyBee.radius:
+    def bee_close(self, bee):
+        distance_between = math.sqrt(pow((bee.x - self.x), 2) + pow((self.y - bee.y), 2))
+        if distance_between <= self.radius + bee.radius:
             return True
         else:
             return False
 
-    def interact(self, HoneyBee):
-        if self.bee_close(self, HoneyBee):
-            if HoneyBee.pollen == 0 and self.stamen:
-                HoneyBee.pollen = self.extractPollen()
-                print("Pollen transferred")
-            elif HoneyBee.pollen == 0 and not self.stamen:
-                print("No Pollen transferred")
-            elif HoneyBee.pollen == 1 and not self.pistil:
-                HoneyBee.pollen = 0
-                print("Pollen given to flower")
-                not self.pistil
+    def interact(self, bee):
+        if self.bee_close(bee):
+            bee.dx = 0
+            bee.dy = 0
+
+
+            # If has enough nectar, bee leaves
+            if self.nectar <= 0 or bee.nectar >= bee.MAX_NECTAR:
+                bee.changeStatus()
+                pass
+
+            bee.nectar = self.extractNectar()
+
+            if bee.pollen == 0:
+                bee.pollen = self.extractPollen()
+            elif bee.pollen > 0:
+                self.pollinate(bee)
         else:
             pass
 
     def update(self):
        # self.transfer_pollen()
+       # todo: grow nectar and pollen
         pass
 
     def death(self):
         pass
 
     def extractPollen(self):
-        not self.stamen
+        # 50 percent change of getting pollen
+        if random.randint(0, 100) < 50:
+            return 1
+        return 0
+
+    def extractNectar(self):
+        self.nectar -= 1
         return 1
+
+    def pollinate(self, bee):
+        if random.randint(0, 100) < 50:
+            bee.pollen -= 1
+            print("I HAVE BABIES!!")
+            # todo seeds
