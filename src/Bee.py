@@ -6,7 +6,7 @@ class HoneyBee(MovableObjects):
 
     def __init__(self, x, y):
         super().__init__(x, y, 6, 0)
-        self.radius = 10#mm
+        self.radius = 1
 
     def update(self):
         super().update()
