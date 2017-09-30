@@ -2,7 +2,7 @@ from Movable import MovableObjects
 import Draw
 
 class HoneyBee(MovableObjects):
-    color = (0, 0, 0)
+    color = (255, 255, 0)
 
     def __init__(self, x, y):
         super().__init__(x, y, 6, 0)

@@ -1,2 +1,2 @@
-class Hive(BaseException):
+#class Hive(BaseException):
 
