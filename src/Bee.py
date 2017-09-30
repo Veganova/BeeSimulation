@@ -1,6 +1,8 @@
 from Movable import MovableObjects
 import Draw
 
+
+#Bees Algorithm
 class HoneyBee(MovableObjects):
     objects = []
 
@@ -8,6 +10,8 @@ class HoneyBee(MovableObjects):
 
     # 6000 milimeters per second
     SPEED = 6000
+
+
 
     # will only be called from hive
     def __init__(self, x, y, hive, honey):
@@ -21,9 +25,20 @@ class HoneyBee(MovableObjects):
         self.honey = honey
         self.pollen = 0
 
+        self.objects.append(self)
+
+        # 0 - wants to get flower
+        # 1 - return necter to hive
+        self.status = 0
+
     def update(self):
         super().update()
-        self.honey -= 1
+        #self.honey -= 1
+
+        if (self.status == 0):
+            self.findFlower()
+        elif (self.status == 1):
+            self.returnToHive()
 
     def death(self):
         pass

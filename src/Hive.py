@@ -19,6 +19,8 @@ class Hive(Posn):
         self.radius = 50
         self.cooldown = self.BIRTH_COOLDOWN
 
+        self.objects.append(self)
+
     def update(self):
         # every second
         if (self.cooldown == 0):
@@ -44,6 +46,7 @@ class Hive(Posn):
 
     def draw(self, canvas):
         Draw.draw_circle(canvas, self.x, self.y, self.radius, self.color)
+
 
 
 
