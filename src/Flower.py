@@ -27,11 +27,10 @@ class Flower(Posn):
         else:
             return False
 
-    def transfer_pollen(self, HoneyBee):
+    def interact(self, HoneyBee):
         if self.bee_close(self, HoneyBee):
             if HoneyBee.pollen == 0 and self.stamen:
-                HoneyBee.pollen = 1
-                not self.stamen
+                HoneyBee.pollen = self.extractPollen()
                 print("Pollen transferred")
             elif HoneyBee.pollen == 0 and not self.stamen:
                 print("No Pollen transferred")
@@ -48,3 +47,7 @@ class Flower(Posn):
 
     def death(self):
         pass
+
+    def extractPollen(self):
+        not self.stamen
+        return 1
