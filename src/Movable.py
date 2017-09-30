@@ -6,6 +6,7 @@ class MovableObjects(BaseException):
         self.dx = dx
         self.dy = dy
 
+
     def update(self):
-        self.x += self.dx
-        self.y += self.dy
+        self.x += self.dx / 50
+        self.y += self.dy / 50
