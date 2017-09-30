@@ -2,6 +2,8 @@ from Movable import MovableObjects
 import Draw
 
 class HoneyBee(MovableObjects):
+    objects = []
+
     color = (255, 255, 0)
 
     # 6000 milimeters per second
@@ -21,7 +23,7 @@ class HoneyBee(MovableObjects):
 
     def update(self):
         super().update()
-        #self.honey -= 1
+        self.honey -= 1
 
     def death(self):
         pass

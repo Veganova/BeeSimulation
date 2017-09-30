@@ -4,6 +4,7 @@ from Position import Posn
 from Bee import HoneyBee
 
 class Flower(Posn):
+    objects = []
 
     def __init__(self, x, y):
         self.x = x;

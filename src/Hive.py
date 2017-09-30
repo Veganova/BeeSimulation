@@ -4,6 +4,7 @@ from Position import Posn
 
 
 class Hive(Posn):
+    objects =[]
 
     MAX_HONEY = 100
     POPULATION_MAX = 10
