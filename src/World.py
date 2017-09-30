@@ -39,7 +39,7 @@ def main():
 
 
         pygame.display.update()
-        pygame.time.delay(100)
+        #pygame.time.delay(100)
 
 main()
 
