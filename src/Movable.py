@@ -9,5 +9,5 @@ class MovableObjects(Posn):
 
 
     def update(self):
-        self.x += self.dx / 50
-        self.y += self.dy / 50
+        self.x += self.dx / 5000
+        self.y += self.dy / 5000

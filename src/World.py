@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 from Bee import HoneyBee
+from Flower import Flower
 from Hive import Hive
 from Position import Posn
 
@@ -23,6 +24,7 @@ def main():
 
     Hive(300, 300)
     #HoneyBee(100, 100)
+    Flower(600, 300)
 
     # Simulation loop
     while True:
@@ -36,10 +38,11 @@ def main():
         for i in Posn.updatables:
             i.update()
             i.draw(canvas)
+            
 
 
         pygame.display.update()
-        pygame.time.delay(100)
+        #pygame.time.delay(100)
 
 main()
 
