@@ -46,7 +46,7 @@ def main():
         for i in Hive.objects:
             i.update()
             i.draw(canvas)
-            
+
 
 
         pygame.display.update()

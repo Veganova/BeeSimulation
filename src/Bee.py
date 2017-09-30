@@ -14,7 +14,7 @@ class HoneyBee(MovableObjects):
 
 
     # will only be called from hive
-    def __init__(self, x, y, hive, honey):
+    def __init__(self, x, y, hive, hunger):
 
         super().__init__(x, y, self.SPEED, 0)
         self.radius = 10#mm
@@ -22,7 +22,7 @@ class HoneyBee(MovableObjects):
         self.home = hive
         # honey is the amount fed to the bee at birth
         # this also signifies hunger (if it hits 0, the bee is dead)
-        self.honey = honey
+        self.hunger = hunger
         self.pollen = 0
 
         self.objects.append(self)
