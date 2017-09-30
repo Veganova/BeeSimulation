@@ -14,7 +14,7 @@ class Flower(Posn):
         self.radius = 30
         self.stamen = True # Boolean value indicates presence of pollen
         self.pistil = False
-
+        self.nectar = 50
         self.objects.append(self)
 
     def draw(self, canvas):
