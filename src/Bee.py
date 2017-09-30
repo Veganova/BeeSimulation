@@ -13,6 +13,8 @@ class HoneyBee(MovableObjects):
         # this also signifies hunger (if it hits 0, the bee is dead)
         self.honey = hive.feed(self)
 
+        self.pollen = 0
+
     def update(self):
         super().update()
         self.honey -= 1
