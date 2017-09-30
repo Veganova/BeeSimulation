@@ -1,6 +1,6 @@
 from Movable import MovableObjects
 import Draw
-
+from Flower import Flower
 
 #Bees Algorithm
 class HoneyBee(MovableObjects):
@@ -24,7 +24,7 @@ class HoneyBee(MovableObjects):
         # this also signifies hunger (if it hits 0, the bee is dead)
         self.hunger = hunger
         self.pollen = 0
-
+        self.nectar = 0 #MAX VAlUE of 2
         self.objects.append(self)
 
         # 0 - wants to get flower
@@ -39,6 +39,15 @@ class HoneyBee(MovableObjects):
             self.findFlower()
         elif (self.status == 1):
             self.returnToHive()
+
+    def choose_flower(self):
+        Flower.objects
+        bestFlower = Flower.objects[0]
+        if self.nectar > 2:
+            pass#back to hive
+        for i in range(Flower.object.size):
+            if bestFlower.nectar < Flower.objects[i]:
+                bestFlower = Flower.objects[i]
 
     def death(self):
         pass
